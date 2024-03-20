@@ -6,7 +6,7 @@
     # Dev
     zig
     rustup
-    lua5_4_compat	    
+    lua5_4_compat
     go
   ];
 
