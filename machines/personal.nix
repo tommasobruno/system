@@ -1,16 +1,16 @@
-{ ... }: 
+{ ... }:
 
-  let username = "tommasobruno";
+let username = "tommasobruno";
 
-  in {
+in {
 
-    users.users."${username}".home = "/Users/${username}";
-    home-manager.users."${username}" = {
+  users.users."${username}".home = "/Users/${username}";
+  home-manager.users."${username}" = {
 
-      imports = [ ../modules/home ];
+    imports = [ ../modules/home ];
 
-      home.stateVersion = "23.11";
-    };
+    home.stateVersion = "23.11";
+  };
 
-    imports = [ ../modules/darwin ];
- }
+  imports = [ ../modules/darwin ];
+}
