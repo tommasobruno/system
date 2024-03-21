@@ -4,7 +4,7 @@
 
   home.packages = with pkgs; [
     # Dev
-    zig
+    zigpkgs.master
     rustup
     lua5_4_compat
     go

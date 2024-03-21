@@ -1,4 +1,4 @@
-{ self, nix-darwin, nixvim, home-manager }: {
+{ self, zig, nix-darwin, nixvim, home-manager }: {
 
   mkMacOS = { macModule }:
 
@@ -40,7 +40,10 @@
           };
         };
 
-        nixpkgs = { hostPlatform = system; };
+        nixpkgs = {
+          hostPlatform = system;
+          overlays = [ zig.overlays.default ];
+        };
         services.nix-daemon.enable = true;
 
       };
