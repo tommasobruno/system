@@ -50,24 +50,28 @@
       };
       kanagawa = {
         enable = true;
-        terminalColors = true;
-        transparent = true;
-        colors.theme = { all = { ui = { bg_gutter = "none"; }; }; };
-        background.dark = "dragon";
-        overrides = ''
-          local theme = colors.theme
-          return {
-              Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_m3 }, 
-              PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
-              PmenuSbar = { bg = theme.ui.bg_m1 },
-              PmenuThumb = { bg = theme.ui.bg_p2 },
-              Function = { fg = theme.syn.identifier },
+        settings = {
+          terminalColors = true;
+          transparent = true;
+          colors.theme = { all = { ui = { bg_gutter = "none"; }; }; };
+          background.dark = "dragon";
+          overrides = ''
+            function(colors)
+              local theme = colors.theme
+              return {
+                Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_m3 }, 
+                PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+                PmenuSbar = { bg = theme.ui.bg_m1 },
+                PmenuThumb = { bg = theme.ui.bg_p2 },
+                Function = { fg = theme.syn.identifier },
 
-              NormalFloat = { bg = "none" },
-              FloatBorder = { bg = "none" },
-              FloatTitle = { bg = "none" },
-          }
-        '';
+                NormalFloat = { bg = "none" },
+                FloatBorder = { bg = "none" },
+                FloatTitle = { bg = "none" },
+              }
+            end
+          '';
+        };
       };
     };
 
