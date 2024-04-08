@@ -1,6 +1,14 @@
-{ self, nix-darwin, nixvim, home-manager }: {
+{
+  self,
+  zig,
+  nix-darwin,
+  nixvim,
+  home-manager,
+}:
+{
 
-  mkMacOS = { macModule }:
+  mkMacOS =
+    { macModule }:
 
     let
       system = "aarch64-darwin";
@@ -41,13 +49,12 @@
 
         nixpkgs = {
           hostPlatform = system;
-          overlays = [ ];
+          overlays = [ zig.overlays.default ];
         };
         services.nix-daemon.enable = true;
-
       };
-
-    in nix-darwin.lib.darwinSystem {
+    in
+    nix-darwin.lib.darwinSystem {
       inherit system;
       modules = [
         common
@@ -56,5 +63,4 @@
         macModule
       ];
     };
-
 }

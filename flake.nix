@@ -19,14 +19,30 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #zig.url = "github:mitchellh/zig-overlay";
+    zig.url = "github:mitchellh/zig-overlay";
   };
 
-  outputs = inputs@{ self, home-manager, nixvim, nix-darwin, nixpkgs }:
+  outputs =
+    inputs@{
+      self,
+      zig,
+      home-manager,
+      nixvim,
+      nix-darwin,
+      nixpkgs,
+    }:
     let
-      macosLib =
-        import ./lib/macOS.nix { inherit nix-darwin nixvim home-manager self; };
-    in {
+      macosLib = import ./lib/macOS.nix {
+        inherit
+          zig
+          nix-darwin
+          nixvim
+          home-manager
+          self
+          ;
+      };
+    in
+    {
       darwinConfigurations = with macosLib; {
         personal = mkMacOS { macModule = ./machines/personal.nix; };
       };
