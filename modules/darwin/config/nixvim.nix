@@ -5,7 +5,7 @@
 
     vimAlias = true;
 
-    extraPackages = with pkgs; [ nixfmt stylua ];
+    extraPackages = with pkgs; [ nixfmt-rfc-style stylua ];
 
     globals = {
       mapleader = " ";
@@ -14,7 +14,7 @@
       loaded_netrwPlugin = 1;
     };
 
-    options = {
+    opts = {
       guicursor = "";
       hlsearch = false;
       number = true;
@@ -116,7 +116,7 @@
         keymaps = {
           "<leader>p" = {
             action = "find_files";
-            desc = "Telescope Find Files";
+            options.desc = "Telescope Find Files";
           };
         };
       };
@@ -198,7 +198,7 @@
         };
         servers = {
           nixd.enable = true;
-          zls.enable = true;
+          zls.enable = false;
           gopls.enable = true;
           rust-analyzer = {
             enable = true;
