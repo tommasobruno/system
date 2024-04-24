@@ -4,11 +4,17 @@
   home.sessionPath = [ "/opt/homebrew/bin" ];
 
   home.packages = with pkgs; [
-    # Dev
+    # Basic
+    nodejs_21
+    bun
+
+    # Languages
     zigpkgs.master
     rustup
-    lua5_4_compat
     go
+
+    # hugo
+    hugo
   ];
 
   imports = [ ./config ];

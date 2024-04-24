@@ -1,11 +1,16 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
 
   programs.nixvim = {
     enable = true;
 
     vimAlias = true;
 
-    extraPackages = with pkgs; [ nixfmt-rfc-style stylua ];
+    extraPackages = with pkgs; [
+      nixfmt-rfc-style
+      stylua
+      prettierd
+    ];
 
     globals = {
       mapleader = " ";
@@ -31,21 +36,17 @@
       expandtab = true;
       smartindent = true;
       shiftwidth = 2;
-      fillchars = { eob = " "; };
+      fillchars = {
+        eob = " ";
+      };
     };
 
     colorschemes = {
       rose-pine = {
         enable = false;
-        transparentBackground = true;
-        transparentFloat = true;
-      };
-      vscode = { enable = false; };
-      gruvbox = {
-        enable = false;
         settings = {
-          terminal_colors = true;
-          transparent_mode = true;
+          transparentBackground = true;
+          transparentFloat = true;
         };
       };
       kanagawa = {
@@ -53,7 +54,13 @@
         settings = {
           terminalColors = true;
           transparent = true;
-          colors.theme = { all = { ui = { bg_gutter = "none"; }; }; };
+          colors.theme = {
+            all = {
+              ui = {
+                bg_gutter = "none";
+              };
+            };
+          };
           background.dark = "dragon";
           overrides = ''
             function(colors)
@@ -118,12 +125,26 @@
             action = "find_files";
             options.desc = "Telescope Find Files";
           };
+          "<leader>gp" = {
+            action = "git_files";
+            options.desc = "Telescope Git Files";
+          };
         };
       };
 
       treesitter = {
         enable = true;
-        ensureInstalled = [ "zig" "lua" "rust" "go" ];
+        ensureInstalled = [
+          "zig"
+          "lua"
+          "rust"
+          "go"
+          "yaml"
+          "html"
+          "typescript"
+          "javascript"
+          "nix"
+        ];
       };
 
       lualine = {
@@ -150,13 +171,10 @@
       cmp = {
         enable = true;
         settings = {
-          snippet.expand =
-            "function(args) require('luasnip').lsp_expand(args.body) end";
+          snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
           mapping = {
-            "<Up>" =
-              "cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select })";
-            "<Down>" =
-              "cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select })";
+            "<Up>" = "cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select })";
+            "<Down>" = "cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select })";
             "<cr>" = "cmp.mapping.confirm({ select = true })";
           };
           sources = [
@@ -193,13 +211,17 @@
             "[d" = "goto_next";
             "]d" = "goto_prev";
             "<leader>e" = "open_float";
-
           };
         };
         servers = {
           nixd.enable = true;
           zls.enable = false;
           gopls.enable = true;
+          yamlls.enable = true;
+          html.enable = true;
+          tsserver.enable = true;
+          volar.enable = true;
+          tailwindcss.enable = true;
           rust-analyzer = {
             enable = true;
             installCargo = false; # Rustup contains cargo
@@ -219,6 +241,7 @@
           rust = [ "rustfmt" ];
           nix = [ "nixfmt" ];
           go = [ "gofmt" ];
+          typescript = [ "prettierd" ];
         };
       };
     };
