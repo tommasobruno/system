@@ -42,13 +42,6 @@
     };
 
     colorschemes = {
-      rose-pine = {
-        enable = false;
-        settings = {
-          transparentBackground = true;
-          transparentFloat = true;
-        };
-      };
       kanagawa = {
         enable = true;
         settings = {
