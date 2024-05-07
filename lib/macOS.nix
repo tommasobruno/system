@@ -40,7 +40,6 @@
               magnification = false;
               minimize-to-application = true;
               mineffect = null;
-              show-recents = false;
               tilesize = 48;
               autohide = true;
             };

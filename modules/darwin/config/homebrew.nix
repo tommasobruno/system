@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
 
   homebrew = {
     enable = true;
@@ -6,7 +7,9 @@
       autoUpdate = true;
       cleanup = "zap";
     };
-    casks = [ "arc" ];
+    casks = [
+      "arc"
+      "notion"
+    ];
   };
-
 }
