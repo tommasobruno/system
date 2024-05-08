@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
 
   home.sessionPath = [ "/opt/homebrew/bin" ];
 

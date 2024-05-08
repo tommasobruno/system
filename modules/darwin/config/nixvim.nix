@@ -1,16 +1,11 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
 
   programs.nixvim = {
     enable = true;
 
     vimAlias = true;
 
-    extraPackages = with pkgs; [
-      nixfmt-rfc-style
-      stylua
-      prettierd
-    ];
+    extraPackages = with pkgs; [ nixfmt-rfc-style prettierd ];
 
     globals = {
       mapleader = " ";
@@ -36,9 +31,7 @@
       expandtab = true;
       smartindent = true;
       shiftwidth = 2;
-      fillchars = {
-        eob = " ";
-      };
+      fillchars = { eob = " "; };
     };
 
     colorschemes = {
@@ -47,13 +40,7 @@
         settings = {
           terminalColors = true;
           transparent = true;
-          colors.theme = {
-            all = {
-              ui = {
-                bg_gutter = "none";
-              };
-            };
-          };
+          colors.theme = { all = { ui = { bg_gutter = "none"; }; }; };
           background.dark = "dragon";
           overrides = ''
             function(colors)
@@ -127,17 +114,8 @@
 
       treesitter = {
         enable = true;
-        ensureInstalled = [
-          "zig"
-          "lua"
-          "rust"
-          "go"
-          "yaml"
-          "html"
-          "typescript"
-          "javascript"
-          "nix"
-        ];
+        ensureInstalled =
+          [ "zig" "go" "yaml" "html" "typescript" "javascript" "nix" ];
       };
 
       lualine = {
@@ -164,10 +142,13 @@
       cmp = {
         enable = true;
         settings = {
-          snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
+          snippet.expand =
+            "function(args) require('luasnip').lsp_expand(args.body) end";
           mapping = {
-            "<Up>" = "cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select })";
-            "<Down>" = "cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select })";
+            "<Up>" =
+              "cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select })";
+            "<Down>" =
+              "cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select })";
             "<cr>" = "cmp.mapping.confirm({ select = true })";
           };
           sources = [
@@ -215,11 +196,11 @@
           tsserver.enable = true;
           volar.enable = true;
           tailwindcss.enable = true;
-          rust-analyzer = {
-            enable = true;
-            installCargo = false; # Rustup contains cargo
-            installRustc = false; # Rustup contains rustc
-          };
+          #rust-analyzer = {
+          #enable = true;
+          #installCargo = false; # Rustup contains cargo
+          #installRustc = false; # Rustup contains rustc
+          #};
         };
       };
 
@@ -231,7 +212,7 @@
         };
         formattersByFt = {
           zig = [ "zigfmt" ];
-          rust = [ "rustfmt" ];
+          #rust = [ "rustfmt" ];
           nix = [ "nixfmt" ];
           go = [ "gofmt" ];
           typescript = [ "prettierd" ];

@@ -22,27 +22,15 @@
     zig.url = "github:mitchellh/zig-overlay";
   };
 
-  outputs =
-    inputs@{
-      self,
-      zig,
-      home-manager,
-      nixvim,
-      nix-darwin,
-      nixpkgs,
-    }:
+  outputs = inputs@{ self, zig, home-manager, nixvim, nix-darwin, nixpkgs, }:
     let
       macosLib = import ./lib/macOS.nix {
-        inherit
-          zig
-          nix-darwin
-          nixvim
-          home-manager
-          self
-          ;
+        inherit zig nix-darwin nixvim home-manager self;
       };
-    in
-    {
+    in {
+      formatter.aarch64-darwin =
+        nixpkgs.legacyPackages.aarch64-darwin.nixfmt-classic;
+
       darwinConfigurations = with macosLib; {
         personal = mkMacOS { macModule = ./machines/personal.nix; };
       };
