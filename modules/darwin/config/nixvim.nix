@@ -5,7 +5,7 @@
 
     vimAlias = true;
 
-    extraPackages = with pkgs; [ nixfmt-rfc-style prettierd ];
+    extraPackages = with pkgs; [ nixfmt-classic prettierd ];
 
     globals = {
       mapleader = " ";
