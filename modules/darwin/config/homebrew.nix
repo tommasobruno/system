@@ -6,6 +6,6 @@
       autoUpdate = true;
       cleanup = "zap";
     };
-    casks = [ "arc" "notion" ];
+    casks = [ "arc" ];
   };
 }
