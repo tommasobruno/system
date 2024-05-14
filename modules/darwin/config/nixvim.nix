@@ -120,8 +120,8 @@
 
       lualine = {
         enable = true;
-        iconsEnabled = false;
         theme = "kanagawa";
+        iconsEnabled = false;
         componentSeparators = {
           left = "|";
           right = "|";

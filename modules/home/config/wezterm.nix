@@ -28,18 +28,18 @@
         }
       }
 
-      config.window_background_image = '/Users/tommasobruno/darwin/modules/home/butterfly.jpg'
-      config.window_background_image_hsb = {
+      -- config.window_background_image = '/Users/tommasobruno/darwin/modules/home/butterfly.jpg'
+      -- config.window_background_image_hsb = {
         -- Darken the background image by reducing it to 1/3rd
-        brightness = 0.03,
+        -- brightness = 0.03,
 
         -- You can adjust the hue by scaling its value.
         -- a multiplier of 1.0 leaves the value unchanged.
-        hue = 1,
+        -- hue = 1,
 
         -- You can adjust the saturation also.
-        saturation = 0.5,
-      }
+        -- saturation = 0.5,
+      -- }
 
       config.window_background_opacity = 1
       config.font = wezterm.font("JetBrains Mono")
