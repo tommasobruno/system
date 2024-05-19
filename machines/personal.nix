@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 let username = "tommasobruno";
 
@@ -9,7 +9,16 @@ in {
 
     imports = [ ../modules/home ];
 
-    home.stateVersion = "23.11";
+    home = {
+
+      packages = with pkgs; [
+        # Languages
+        zig
+        go
+      ];
+
+      stateVersion = "23.11";
+    };
   };
 
   imports = [ ../modules/darwin ];

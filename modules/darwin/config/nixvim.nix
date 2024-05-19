@@ -194,8 +194,8 @@
           yamlls.enable = true;
           html.enable = true;
           tsserver.enable = true;
-          volar.enable = true;
-          tailwindcss.enable = true;
+          volar.enable = false;
+          tailwindcss.enable = false;
           #rust-analyzer = {
           #enable = true;
           #installCargo = false; # Rustup contains cargo

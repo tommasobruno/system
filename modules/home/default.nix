@@ -1,16 +1,10 @@
 { pkgs, ... }: {
 
-  home.sessionPath = [ "/opt/homebrew/bin" ];
+  home = {
+    sessionPath = [ "/opt/homebrew/bin" ];
 
-  home.packages = with pkgs; [
-    # Basic
-    nodejs_22
-    bun
+    packages = with pkgs; [ nodejs_22 ];
+  };
 
-    # Languages
-    zigpkgs.master
-    go
-  ];
-
-  imports = [ ./config ];
+  imports = [ ./config/git.nix ./config/shell.nix ./config/wezterm.nix ];
 }
