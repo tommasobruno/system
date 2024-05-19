@@ -1,40 +1,17 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
 
-  programs.nixvim = {
+let
+  options = import ./nvim/options.nix;
+  keymaps = import ./nvim/keymaps.nix;
+in {
+  programs.nixvim = options // keymaps // {
     enable = true;
-
     vimAlias = true;
 
     extraPackages = with pkgs; [ nixfmt-classic prettierd ];
 
-    globals = {
-      mapleader = " ";
-      maplocalleader = " ";
-      loaded_netrw = 1;
-      loaded_netrwPlugin = 1;
-    };
-
-    opts = {
-      guicursor = "";
-      hlsearch = false;
-      number = true;
-      relativenumber = true;
-      mouse = "a";
-      clipboard = "unnamedplus";
-      breakindent = true;
-      undofile = true;
-      ignorecase = true;
-      smartcase = true;
-      signcolumn = "no";
-      completeopt = "menuone,noselect,menu";
-      termguicolors = true;
-      expandtab = true;
-      smartindent = true;
-      shiftwidth = 2;
-      fillchars = { eob = " "; };
-    };
-
     colorschemes = {
+
       kanagawa = {
         enable = true;
         settings = {
@@ -42,58 +19,9 @@
           transparent = true;
           colors.theme = { all = { ui = { bg_gutter = "none"; }; }; };
           background.dark = "dragon";
-          overrides = ''
-            function(colors)
-              local theme = colors.theme
-              return {
-                Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_m3 }, 
-                PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
-                PmenuSbar = { bg = theme.ui.bg_m1 },
-                PmenuThumb = { bg = theme.ui.bg_p2 },
-                Function = { fg = theme.syn.identifier },
-
-                NormalFloat = { bg = "none" },
-                FloatBorder = { bg = "none" },
-                FloatTitle = { bg = "none" },
-              }
-            end
-          '';
         };
       };
     };
-
-    keymaps = [
-      {
-        action = "<cmd>Oil<cr>";
-        mode = "n";
-        key = "-";
-        options.desc = "Oil mode";
-      }
-      {
-        action = "<C-w><C-h>";
-        mode = "n";
-        key = "<C-h>";
-        options.desc = "Move focus to left window";
-      }
-      {
-        action = "<C-w><C-l>";
-        mode = "n";
-        key = "<C-l>";
-        options.desc = "Move focus to right window";
-      }
-      {
-        action = "<C-w><C-j>";
-        mode = "n";
-        key = "<C-j>";
-        options.desc = "Move focus to lower window";
-      }
-      {
-        action = "<C-w><C-k>";
-        mode = "n";
-        key = "<C-k>";
-        options.desc = "Move focus to upper window";
-      }
-    ];
 
     plugins = {
       oil.enable = true;
@@ -189,7 +117,7 @@
         };
         servers = {
           nixd.enable = true;
-          zls.enable = false;
+          zls.enable = true;
           gopls.enable = true;
           yamlls.enable = true;
           html.enable = true;
