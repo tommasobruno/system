@@ -4,9 +4,11 @@ let
   options = import ./nvim/options.nix;
   keymaps = import ./nvim/keymaps.nix;
 in {
-  programs.nixvim = options // keymaps // {
+  programs.nixvim = options // {
     enable = true;
     vimAlias = true;
+
+    keymaps = keymaps;
 
     extraPackages = with pkgs; [ nixfmt-classic prettierd ];
 
@@ -17,10 +19,27 @@ in {
         settings = {
           terminalColors = true;
           transparent = true;
-          colors.theme = { all = { ui = { bg_gutter = "none"; }; }; };
           background.dark = "dragon";
+          colors.theme = {
+            all = {
+              ui = { bg_gutter = "none"; };
+              syn = { keyword = "#938056"; };
+            };
+          };
+          overrides = ''
+            function(colors)
+              local theme = colors.theme
+              return {
+                Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_m3 }, 
+                PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+                PmenuSbar = { bg = theme.ui.bg_m1 },
+                PmenuThumb = { bg = theme.ui.bg_p2 }
+              }
+            end
+          '';
         };
       };
+
     };
 
     plugins = {
@@ -44,6 +63,8 @@ in {
         enable = true;
         ensureInstalled =
           [ "zig" "go" "yaml" "html" "typescript" "javascript" "nix" ];
+        nixvimInjections = true;
+        nixGrammars = true;
       };
 
       lualine = {
@@ -62,7 +83,6 @@ in {
 
       # LSP Configuration
       cmp_luasnip.enable = true;
-      cmp-nvim-lsp.enable = true;
       cmp-buffer.enable = true;
       cmp-path.enable = true;
       luasnip.enable = true;
@@ -80,7 +100,6 @@ in {
             "<cr>" = "cmp.mapping.confirm({ select = true })";
           };
           sources = [
-            { name = "nvim_lsp"; }
             { name = "path"; }
             { name = "luasnip"; }
             {
@@ -116,7 +135,7 @@ in {
           };
         };
         servers = {
-          nixd.enable = true;
+          nil_ls.enable = true;
           zls.enable = true;
           gopls.enable = true;
           yamlls.enable = true;
@@ -124,11 +143,6 @@ in {
           tsserver.enable = true;
           volar.enable = false;
           tailwindcss.enable = false;
-          #rust-analyzer = {
-          #enable = true;
-          #installCargo = false; # Rustup contains cargo
-          #installRustc = false; # Rustup contains rustc
-          #};
         };
       };
 
@@ -140,7 +154,6 @@ in {
         };
         formattersByFt = {
           zig = [ "zigfmt" ];
-          #rust = [ "rustfmt" ];
           nix = [ "nixfmt" ];
           go = [ "gofmt" ];
           typescript = [ "prettierd" ];
