@@ -2,13 +2,14 @@
 
 let
   options = import ./nvim/options.nix;
+  globals = import ./nvim/globals.nix;
   keymaps = import ./nvim/keymaps.nix;
 in {
-  programs.nixvim = options // {
+  programs.nixvim = {
     enable = true;
     vimAlias = true;
 
-    keymaps = keymaps;
+    inherit keymaps options globals;
 
     extraPackages = with pkgs; [ nixfmt-classic prettierd ];
     extraPlugins = with pkgs.vimPlugins; [ colorbuddy-nvim ];
@@ -57,6 +58,7 @@ in {
 
       # LSP Configuration
       cmp_luasnip.enable = true;
+      cmp-nvim-lsp.enable = true;
       cmp-buffer.enable = true;
       cmp-path.enable = true;
       luasnip.enable = true;
@@ -74,6 +76,7 @@ in {
             "<cr>" = "cmp.mapping.confirm({ select = true })";
           };
           sources = [
+            { name = "nvim_lsp"; }
             { name = "path"; }
             { name = "luasnip"; }
             {
