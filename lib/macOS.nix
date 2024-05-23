@@ -24,7 +24,6 @@
       specialArgs = { inherit inputs; };
       modules = [
         nix-common
-        inputs.nixvim.nixDarwinModules.nixvim
         inputs.home-manager.darwinModules.home-manager
         {
           users.users.${hostname}.home = "/Users/${hostname}";
@@ -33,8 +32,11 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${hostname} = {
-              imports =
-                [ inputs.self.outputs.homeManagerModules.default homeModule ];
+              imports = [
+                inputs.nixvim.homeManagerModules.nixvim
+                inputs.self.outputs.homeManagerModules.default
+                homeModule
+              ];
             };
           };
         }

@@ -7,5 +7,5 @@
     packages = with pkgs; [ nodejs_22 ];
   };
 
-  imports = [ ./terminal/git.nix ./terminal/shell.nix ./terminal/wezterm.nix ];
+  imports = [ ./services ./apps ];
 }

@@ -1,15 +1,15 @@
 { pkgs, ... }:
 
 let
-  options = import ./nvim/options.nix;
-  globals = import ./nvim/globals.nix;
-  keymaps = import ./nvim/keymaps.nix;
+  opts = import ./options.nix;
+  globals = import ./globals.nix;
+  keymaps = import ./keymaps.nix;
 in {
   programs.nixvim = {
     enable = true;
     vimAlias = true;
 
-    inherit keymaps options globals;
+    inherit keymaps opts globals;
 
     extraPackages = with pkgs; [ nixfmt-classic prettierd ];
     extraPlugins = with pkgs.vimPlugins; [ colorbuddy-nvim ];
