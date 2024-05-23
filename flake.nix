@@ -28,8 +28,8 @@
 
       darwinConfigurations = with macosLib; {
         personal = mkMacOS {
-          macModule = ./hosts/personal/macbook-m2/darwin.nix;
-          homeModule = ./hosts/personal/macbook-m2/home.nix;
+          macModule = ./hosts/macbook-m2p/darwin.nix;
+          homeModule = ./hosts/macbook-m2p/home.nix;
           system = "aarch64-darwin";
           hostname = "tommasobruno";
         };
