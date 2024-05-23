@@ -20,7 +20,6 @@
     smartcase = true;
     signcolumn = "no";
     completeopt = "menuone,noselect,menu";
-    termguicolors = true;
     expandtab = true;
     smartindent = true;
     shiftwidth = 2;

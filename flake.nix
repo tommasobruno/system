@@ -20,19 +20,22 @@
     };
   };
 
-  outputs = inputs@{ self, home-manager, nixvim, nix-darwin, nixpkgs }:
-    let
-      macosLib =
-        import ./lib/macOS.nix { inherit nix-darwin nixvim home-manager self; };
+  outputs = { nixpkgs, ... }@inputs:
+    let macosLib = import ./lib/macOS.nix { inherit inputs; };
     in {
       formatter.aarch64-darwin =
         nixpkgs.legacyPackages.aarch64-darwin.nixfmt-classic;
 
       darwinConfigurations = with macosLib; {
         personal = mkMacOS {
-          macModule = ./machines/personal.nix;
+          macModule = ./hosts/personal/macbook-m2/darwin.nix;
+          homeModule = ./hosts/personal/macbook-m2/home.nix;
           system = "aarch64-darwin";
+          hostname = "tommasobruno";
         };
       };
+
+      homeManagerModules.default = ./home-manager;
+      darwinModules.default = ./darwin;
     };
 }

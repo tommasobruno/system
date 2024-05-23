@@ -11,36 +11,11 @@ in {
     keymaps = keymaps;
 
     extraPackages = with pkgs; [ nixfmt-classic prettierd ];
+    extraPlugins = with pkgs.vimPlugins; [ colorbuddy-nvim ];
 
-    colorschemes = {
-
-      kanagawa = {
-        enable = true;
-        settings = {
-          terminalColors = true;
-          transparent = true;
-          background.dark = "dragon";
-          colors.theme = {
-            all = {
-              ui = { bg_gutter = "none"; };
-              syn = { keyword = "#938056"; };
-            };
-          };
-          overrides = ''
-            function(colors)
-              local theme = colors.theme
-              return {
-                Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_m3 }, 
-                PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
-                PmenuSbar = { bg = theme.ui.bg_m1 },
-                PmenuThumb = { bg = theme.ui.bg_p2 }
-              }
-            end
-          '';
-        };
-      };
-
-    };
+    extraConfigLuaPost = ''
+      vim.cmd.colorscheme("gruvbuddy")
+    '';
 
     plugins = {
       oil.enable = true;
@@ -69,7 +44,6 @@ in {
 
       lualine = {
         enable = true;
-        theme = "kanagawa";
         iconsEnabled = false;
         componentSeparators = {
           left = "|";
@@ -141,8 +115,6 @@ in {
           yamlls.enable = true;
           html.enable = true;
           tsserver.enable = true;
-          volar.enable = false;
-          tailwindcss.enable = false;
         };
       };
 

@@ -1,9 +1,9 @@
-{ self, nix-darwin, nixvim, home-manager }: {
+{ inputs }: {
 
-  mkMacOS = { macModule, system }:
+  mkMacOS = { macModule, homeModule, system, hostname }:
 
     let
-      common = {
+      nix-common = {
 
         # Nix settings
         nix = {
@@ -16,19 +16,29 @@
         nixpkgs = { hostPlatform = system; };
         services.nix-daemon.enable = true;
 
-        system.configurationRevision = self.rev or self.dirtyRev or null;
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-        };
-
+        system.configurationRevision =
+          inputs.self.rev or inputs.self.dirtyRev or null;
       };
-    in nix-darwin.lib.darwinSystem {
+    in inputs.nix-darwin.lib.darwinSystem {
       inherit system;
+      specialArgs = { inherit inputs; };
       modules = [
-        common
-        nixvim.nixDarwinModules.nixvim
-        home-manager.darwinModules.home-manager
+        nix-common
+        inputs.nixvim.nixDarwinModules.nixvim
+        inputs.home-manager.darwinModules.home-manager
+        {
+          users.users.${hostname}.home = "/Users/${hostname}";
+          home-manager = {
+            extraSpecialArgs = { inherit inputs; };
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.${hostname} = {
+              imports =
+                [ inputs.self.outputs.homeManagerModules.default homeModule ];
+            };
+          };
+        }
+        inputs.self.outputs.darwinModules.default
         macModule
       ];
     };
