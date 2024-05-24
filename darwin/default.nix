@@ -44,5 +44,5 @@
     systemPackages = with pkgs; [ vim ];
   };
 
-  imports = [ ./config/homebrew.nix ];
+  imports = [ ./modules/homebrew.nix ];
 }

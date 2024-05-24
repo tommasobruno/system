@@ -7,5 +7,5 @@
     packages = with pkgs; [ nodejs_22 ];
   };
 
-  imports = [ ./services ./apps ];
+  imports = [ ./modules ];
 }
