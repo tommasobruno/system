@@ -1,25 +1,11 @@
 { pkgs, ... }: {
 
   system = {
-
     stateVersion = 4;
 
-    defaults = {
-      loginwindow = {
-        SHOWFULLNAME = false;
-        GuestEnabled = false;
-      };
-
-      dock = {
-        launchanim = false;
-        magnification = false;
-        minimize-to-application = true;
-        mineffect = null;
-        tilesize = 48;
-        autohide = true;
-        persistent-apps =
-          [ /Applications/Arc.app /System/Applications/Calendar.app ];
-      };
+    defaults.loginwindow = {
+      SHOWFULLNAME = false;
+      GuestEnabled = false;
     };
   };
 
@@ -44,5 +30,5 @@
     systemPackages = with pkgs; [ vim ];
   };
 
-  imports = [ ./modules/homebrew.nix ];
+  imports = [ ./modules ];
 }
