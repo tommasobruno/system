@@ -38,7 +38,7 @@ in {
       treesitter = {
         enable = true;
         ensureInstalled =
-          [ "zig" "go" "yaml" "html" "typescript" "javascript" "nix" ];
+          [ "zig" "go" "yaml" "html" "typescript" "javascript" "nix" "cpp" ];
         nixvimInjections = true;
         nixGrammars = true;
       };
@@ -118,6 +118,7 @@ in {
           yamlls.enable = true;
           html.enable = true;
           tsserver.enable = true;
+          clangd.enable = true;
         };
       };
 
@@ -132,6 +133,7 @@ in {
           nix = [ "nixfmt" ];
           go = [ "gofmt" ];
           typescript = [ "prettierd" ];
+          cpp = [ "clang-format" ];
         };
       };
     };
