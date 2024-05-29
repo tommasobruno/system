@@ -1,4 +1,4 @@
-{ inputs }: {
+{ inputs, lib }: {
 
   mkMacOS = { macModule, homeModule, system, hostname }:
 
@@ -14,6 +14,9 @@
         };
 
         nixpkgs = { hostPlatform = system; };
+        nixpkgs.config.allowUnfreePredicate = pkg:
+          builtins.elem (lib.getName pkg) [ "obsidian" ];
+
         services.nix-daemon.enable = true;
 
         system.configurationRevision =

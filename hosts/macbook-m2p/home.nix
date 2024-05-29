@@ -5,10 +5,6 @@
     email = "bruno.tommaso@protonmail.com";
   };
 
-  home.packages = with pkgs; [
-    # Languages
-    zig
-    go
-  ];
+  home.packages = with pkgs; [ obsidian ];
 
 }

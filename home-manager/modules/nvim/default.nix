@@ -11,7 +11,7 @@ in {
 
     inherit keymaps opts globals;
 
-    extraPackages = with pkgs; [ nixfmt-classic prettierd ];
+    extraPackages = with pkgs; [ nixfmt-classic ];
     extraPlugins = with pkgs.vimPlugins; [ colorbuddy-nvim ];
 
     extraConfigLuaPost = ''
@@ -113,12 +113,14 @@ in {
         };
         servers = {
           nil_ls.enable = true;
-          zls.enable = true;
-          gopls.enable = true;
-          yamlls.enable = true;
-          html.enable = true;
-          tsserver.enable = true;
-          clangd.enable = true;
+          zls = {
+            enable = true;
+            package = null;
+          };
+          clangd = {
+            enable = true;
+            package = null;
+          };
         };
       };
 
@@ -131,8 +133,6 @@ in {
         formattersByFt = {
           zig = [ "zigfmt" ];
           nix = [ "nixfmt" ];
-          go = [ "gofmt" ];
-          typescript = [ "prettierd" ];
           cpp = [ "clang-format" ];
         };
       };

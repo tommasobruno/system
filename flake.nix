@@ -21,7 +21,11 @@
   };
 
   outputs = { nixpkgs, ... }@inputs:
-    let macosLib = import ./lib/macOS.nix { inherit inputs; };
+    let
+      macosLib = import ./lib/macOS.nix {
+        inherit inputs;
+        lib = nixpkgs.lib;
+      };
     in {
       formatter.aarch64-darwin =
         nixpkgs.legacyPackages.aarch64-darwin.nixfmt-classic;
