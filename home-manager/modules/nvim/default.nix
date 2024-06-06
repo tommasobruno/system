@@ -18,6 +18,13 @@ in {
       vim.cmd.colorscheme("gruvbuddy")
     '';
 
+    filetype = {
+      extension = {
+        vert = "glsl";
+        frag = "glsl";
+      };
+    };
+
     plugins = {
       oil.enable = true;
 
@@ -37,8 +44,17 @@ in {
 
       treesitter = {
         enable = true;
-        ensureInstalled =
-          [ "zig" "go" "yaml" "html" "typescript" "javascript" "nix" "cpp" ];
+        ensureInstalled = [
+          "zig"
+          "go"
+          "yaml"
+          "html"
+          "typescript"
+          "javascript"
+          "nix"
+          "cpp"
+          "glsl"
+        ];
         nixvimInjections = true;
         nixGrammars = true;
       };
@@ -112,10 +128,14 @@ in {
           };
         };
         servers = {
-          nil_ls.enable = true;
+          nil-ls.enable = true;
           zls = {
             enable = true;
             package = null;
+            settings = {
+              enable_build_on_save = true;
+              enable_autofix = true;
+            };
           };
           clangd = {
             enable = true;
