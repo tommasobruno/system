@@ -11,10 +11,8 @@
 
   security.pam.enableSudoTouchIdAuth = true;
 
-  fonts = {
-    fontDir.enable = true;
-    fonts = [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
-  };
+  fonts.packages =
+    [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
   programs.zsh = {
     enable = true;
