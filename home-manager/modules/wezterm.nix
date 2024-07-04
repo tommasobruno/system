@@ -7,8 +7,6 @@
     extraConfig = ''
       local wezterm = require 'wezterm'
       local config = {}
-        
-
       local mux = wezterm.mux
 
       wezterm.on("gui-startup", function()
