@@ -131,16 +131,10 @@ in {
           nil-ls.enable = true;
           zls = {
             enable = true;
-            package = null;
-            settings = {
-              enable_build_on_save = true;
-              enable_autofix = true;
-            };
+            settings = { enable_build_on_save = true; };
           };
-          clangd = {
-            enable = true;
-            package = null;
-          };
+          clangd.enable = true;
+          gopls.enable = true;
         };
       };
 
@@ -154,6 +148,8 @@ in {
           zig = [ "zigfmt" ];
           nix = [ "nixfmt" ];
           cpp = [ "clang-format" ];
+          c = [ "clang-format" ];
+          go = [[ "gofmt" "goimports" ]];
         };
       };
     };
