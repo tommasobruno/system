@@ -44,7 +44,7 @@ in {
 
       treesitter = {
         enable = true;
-        ensureInstalled = [
+        settings.ensure_installed = [
           "zig"
           "go"
           "yaml"
@@ -54,9 +54,9 @@ in {
           "nix"
           "cpp"
           "glsl"
+          "c"
         ];
         nixvimInjections = true;
-        nixGrammars = true;
       };
 
       lualine = {
