@@ -135,6 +135,11 @@ in {
           };
           clangd.enable = true;
           gopls.enable = true;
+          rust-analyzer = {
+            enable = true;
+            installCargo = false;
+            installRustc = false;
+          };
         };
       };
 
@@ -150,6 +155,7 @@ in {
           cpp = [ "clang-format" ];
           c = [ "clang-format" ];
           go = [[ "gofmt" "goimports" ]];
+          rust = [ "rustfmt" ];
         };
       };
     };

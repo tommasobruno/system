@@ -13,6 +13,7 @@
     zig
     go
     nodejs_22
+    rustup
   ];
 
 }
