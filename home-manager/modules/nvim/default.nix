@@ -44,18 +44,21 @@ in {
 
       treesitter = {
         enable = true;
-        settings.ensure_installed = [
-          "zig"
-          "go"
-          "yaml"
-          "html"
-          "typescript"
-          "javascript"
-          "nix"
-          "cpp"
-          "glsl"
-          "c"
-        ];
+        settings = {
+          parser_install_dir = "~/.config/nvim/treesitter";
+          ensure_installed = [
+            "zig"
+            "go"
+            "yaml"
+            "html"
+            "typescript"
+            "javascript"
+            "nix"
+            "cpp"
+            "glsl"
+            "c"
+          ];
+        };
         nixvimInjections = true;
       };
 
