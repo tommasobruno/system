@@ -1,5 +1,4 @@
 { ... }: {
-
   home = {
     sessionPath = [ "/opt/homebrew/bin" ];
     stateVersion = "23.11";

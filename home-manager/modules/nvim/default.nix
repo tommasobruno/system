@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 let
   opts = import ./options.nix;
   globals = import ./globals.nix;

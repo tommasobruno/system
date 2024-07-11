@@ -1,4 +1,1 @@
-{ ... }: {
-
-  imports = [ ./git.nix ./shell.nix ./wezterm.nix ./nvim ];
-}
+{ ... }: { imports = [ ./git.nix ./shell.nix ./wezterm.nix ./nvim ]; }

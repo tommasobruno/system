@@ -1,5 +1,4 @@
 { lib, config, ... }:
-
 let cfg = config.git;
 in {
   options = {

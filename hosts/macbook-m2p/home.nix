@@ -1,5 +1,4 @@
 { pkgs, ... }: {
-
   git = {
     username = "tommasobruno";
     email = "bruno.tommaso@protonmail.com";
@@ -15,5 +14,4 @@
     nodejs_22
     rustup
   ];
-
 }

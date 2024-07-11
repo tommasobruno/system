@@ -1,5 +1,1 @@
-{ ... }: {
-
-  imports = [ ./homebrew.nix ./dock.nix ];
-
-}
+{ ... }: { imports = [ ./homebrew.nix ./dock.nix ]; }

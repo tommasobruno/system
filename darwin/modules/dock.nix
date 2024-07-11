@@ -1,5 +1,4 @@
 { ... }: {
-
   system.defaults.dock = {
     launchanim = false;
     magnification = false;
@@ -10,5 +9,4 @@
     persistent-apps =
       [ /Applications/Arc.app /System/Applications/Calendar.app ];
   };
-
 }
