@@ -2,7 +2,8 @@ name: "Nix"
 on:
   push:
     paths:
-      - **.nix
+      - '**.nix'
+      - .github/workflows/nix.yml
     branches:
       - main
 
