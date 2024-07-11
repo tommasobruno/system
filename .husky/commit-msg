@@ -2,5 +2,5 @@
 
 . "$(dirname -- "$0")/_/husky.sh"
 
-./pre-commit.sh "$1"
+./.github/hooks/pre-commit.sh "$1"
 
