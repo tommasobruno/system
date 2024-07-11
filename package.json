@@ -1,0 +1,17 @@
+{
+  "name": "system",
+  "version": "1.0.0",
+  "description": "Husky pre-commit",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "Tommaso Bruno",
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^9.0.11"
+  }
+}
