@@ -12,7 +12,7 @@
   security.pam.enableSudoTouchIdAuth = true;
 
   fonts.packages =
-    [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+    [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" ]; }) ];
 
   programs.zsh = {
     enable = true;

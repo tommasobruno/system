@@ -28,8 +28,8 @@
         }
       }
 
-      config.font = wezterm.font("JetBrains Mono")
-      config.font_size = 13
+      config.font = wezterm.font("Iosevka NFM")
+      config.font_size = 15
       config.use_fancy_tab_bar = false
       config.send_composed_key_when_left_alt_is_pressed = true
       config.send_composed_key_when_right_alt_is_pressed = true

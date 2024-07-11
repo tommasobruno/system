@@ -132,6 +132,7 @@ in {
         };
         servers = {
           nil-ls.enable = true;
+          yamlls.enable = true;
           zls = {
             enable = true;
             settings = { enable_build_on_save = true; };
