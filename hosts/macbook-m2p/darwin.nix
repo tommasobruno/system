@@ -6,4 +6,5 @@
     "/Users/tommasobruno/Applications/Home Manager Apps/Obsidian.app/"
   ];
 
+  homebrew.installCasks = [ "arc" ];
 }
