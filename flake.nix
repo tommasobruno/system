@@ -41,5 +41,8 @@
 
       homeManagerModules.default = ./home-manager;
       darwinModules.default = ./darwin;
+
+      packages.aarch64-darwin.default =
+        nixpkgs.legacyPackages.aarch64-darwin.nixfmt-classic;
     };
 }
