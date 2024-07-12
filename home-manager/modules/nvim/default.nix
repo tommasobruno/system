@@ -33,6 +33,17 @@ in {
             min_chars = 2;
             nvim_cmp = true;
           };
+          mappings = {
+            "<leader>fn" = {
+              action = "require('obsidian').util.gf_passthrough";
+              opts = {
+                buffer = true;
+                expr = true;
+                noremap = false;
+              };
+            };
+          };
+          ui.enable = false;
           workspaces = [{
             name = "personal";
             path = "~/obsidian/personal";
@@ -49,7 +60,7 @@ in {
             show_hidden = true;
             is_always_hidden = ''
               function(name, _)
-                return name == '..' or name == '.git' or name == '.DS_Store'
+                return name == '..' or name == '.git' or name == '.DS_Store' or name == '.obsidian'
               end
             '';
           };
@@ -93,7 +104,6 @@ in {
             "markdown_inline"
           ];
         };
-        nixvimInjections = true;
       };
 
       lualine = {
