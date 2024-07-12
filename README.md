@@ -6,17 +6,17 @@
 
 
 ## Apple Users
-- 1 Install Hombrew (if using apple devices)
+Install Hombrew (if using apple devices)
 ```shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-- 2 Install nix-darwin
+Install nix-darwin
 ```shell
 nix run nix-darwin -- switch --flake (PATH WHERE YOU CLONED THE REPO)
 ```
 
-- 3 Rebuild flake
+Rebuild flake
 ```shell
 darwin-rebuild switch --flake (PATH WHERE flake.nix is)
 ```
