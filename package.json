@@ -8,9 +8,9 @@
   "scripts": {
     "prepare": "husky"
   },
-  "keywords": [],
+  "keywords": ["husky"],
   "author": "Tommaso Bruno",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "husky": "^9.0.11"
   }
