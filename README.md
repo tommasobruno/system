@@ -1,5 +1,7 @@
 # Systems' configurations
 
+![screenshot](./.github/resources/nvim-setup.png)
+
 ## Requirements
 - Install Nix (based on your operating system)
 [Installation Guide](https://nixos.wiki/wiki/Nix_Installation_Guide)
