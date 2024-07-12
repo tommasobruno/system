@@ -5,7 +5,7 @@ in {
     homebrew = {
       installCasks = lib.mkOption {
         type = lib.types.listOf lib.types.str;
-        description = "homebrew casks to install";
+        description = "Homebrew casks to install";
       };
     };
   };
