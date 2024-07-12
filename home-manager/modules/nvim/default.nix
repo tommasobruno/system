@@ -11,7 +11,7 @@ in {
     inherit keymaps opts globals;
 
     extraPackages = with pkgs; [ nixfmt-classic ];
-    extraPlugins = with pkgs.vimPlugins; [ colorbuddy-nvim ];
+    extraPlugins = with pkgs.vimPlugins; [ colorbuddy-nvim plenary-nvim ];
 
     extraConfigLuaPost = ''
       vim.cmd.colorscheme("gruvbuddy")
@@ -25,6 +25,23 @@ in {
     };
 
     plugins = {
+
+      obsidian = {
+        enable = true;
+        settings = {
+          completion = {
+            min_chars = 2;
+            nvim_cmp = true;
+          };
+          workspaces = [{
+            name = "personal";
+            path = "~/obsidian/personal";
+          }];
+          open_app_foreground = true;
+          yaml_parser = "native";
+        };
+      };
+
       oil = {
         enable = true;
         settings = {
@@ -56,6 +73,10 @@ in {
       treesitter = {
         enable = true;
         settings = {
+          highlight = {
+            enable = true;
+            additional_vim_regex_highlighting = false;
+          };
           parser_install_dir = "~/.config/nvim/treesitter";
           ensure_installed = [
             "zig"
@@ -68,6 +89,8 @@ in {
             "cpp"
             "glsl"
             "c"
+            "markdown"
+            "markdown_inline"
           ];
         };
         nixvimInjections = true;
