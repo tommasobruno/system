@@ -43,6 +43,7 @@ let
       s
     else
       { }) servers_set;
+
 in {
   options = {
     nvim.dev = {
@@ -56,7 +57,8 @@ in {
 
   config = {
     programs.nixvim = {
-      extraPackages = with pkgs; [ nixfmt-classic ];
+      extraPackages = with pkgs;
+        [ nixfmt-classic ] ++ (if cfg.typescript then [ prettierd ] else [ ]);
 
       plugins = {
         lsp = {
