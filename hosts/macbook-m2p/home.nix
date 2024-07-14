@@ -13,12 +13,12 @@
       }];
     };
 
-    lsp = {
-      gopls = true;
-      zls = true;
-      clangd = true;
-      rust_analyzer = true;
-      yamlls = true;
+    dev = {
+      go = true;
+      zig = true;
+      c = true;
+      rust = true;
+      typescript = true;
     };
 
     treesitter_parsers = [

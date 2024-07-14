@@ -1,8 +1,7 @@
 { ... }: {
   imports = [
-    ./lsp.nix
+    ./dev.nix
     ./oil.nix
-    ./conform.nix
     ./lualine.nix
     ./obsidian.nix
     ./telescope.nix
