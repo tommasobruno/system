@@ -1,7 +1,10 @@
 { ... }: {
+
+  programs.home-manager.enable = true;
+
   home = {
     sessionPath = [ "/opt/homebrew/bin" ];
-    stateVersion = "23.11";
+    stateVersion = "24.11";
   };
 
   imports = [ ./modules ];
