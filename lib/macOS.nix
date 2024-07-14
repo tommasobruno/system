@@ -21,14 +21,12 @@
       };
     in inputs.nix-darwin.lib.darwinSystem {
       inherit system;
-      specialArgs = { inherit inputs; };
       modules = [
         nix-common
         inputs.home-manager.darwinModules.home-manager
         {
           users.users.${hostname}.home = "/Users/${hostname}";
           home-manager = {
-            extraSpecialArgs = { inherit inputs; };
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${hostname} = {
