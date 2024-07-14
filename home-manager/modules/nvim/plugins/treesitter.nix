@@ -21,7 +21,7 @@ in {
             additional_vim_regex_highlighting = false;
           };
           parser_install_dir = "~/.config/nvim/treesitter";
-          ensure_installed = [ "nix" ] ++ cfg.treesitter_parsers;
+          ensure_installed = [ "nix" "yaml" ] ++ cfg.treesitter_parsers;
         };
       };
     };

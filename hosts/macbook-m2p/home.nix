@@ -14,11 +14,11 @@
     };
 
     dev = {
-      go = true;
-      zig = true;
-      c = true;
-      rust = true;
-      typescript = true;
+      go.enable = true;
+      zig.enable = true;
+      c.enable = true;
+      rust.enable = true;
+      typescript.enable = true;
 
       extra_formatters = with pkgs; [ prettierd nixfmt-classic ];
     };
@@ -26,12 +26,10 @@
     treesitter_parsers = [
       "zig"
       "go"
-      "yaml"
       "html"
       "typescript"
       "javascript"
       "cpp"
-      "glsl"
       "c"
       "markdown"
       "markdown_inline"

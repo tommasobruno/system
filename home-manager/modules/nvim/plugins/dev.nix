@@ -4,11 +4,11 @@ let cfg = config.nvim.dev;
 in {
   options = {
     nvim.dev = {
-      go = mkEnableOption "Enable go dev setup";
-      zig = mkEnableOption "Enable zig dev setup";
-      c = mkEnableOption "Enable c/c++ dev setup";
-      rust = mkEnableOption "Enable rust dev setup";
-      typescript = mkEnableOption "Enable typescript dev setup";
+      go.enable = mkEnableOption "Enable go dev setup";
+      zig.enable = mkEnableOption "Enable zig dev setup";
+      c.enable = mkEnableOption "Enable c/c++ dev setup";
+      rust.enable = mkEnableOption "Enable rust dev setup";
+      typescript.enable = mkEnableOption "Enable typescript dev setup";
 
       extra_formatters = mkOption {
         type = with types; listOf package;
