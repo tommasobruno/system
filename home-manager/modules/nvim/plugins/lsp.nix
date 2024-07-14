@@ -4,10 +4,11 @@ let cfg = config.nvim.lsp;
 in {
   options = {
     nvim.lsp = {
-      enable_gopls = mkEnableOption "Enable go lsp server";
-      enable_zls = mkEnableOption "Enable zig lsp server";
-      enable_clangd = mkEnableOption "Enable c/c++ lsp server";
-      enable_rust_analyzer = mkEnableOption "Enable rust lsp server";
+      gopls = mkEnableOption "Enable go lsp server";
+      zls = mkEnableOption "Enable zig lsp server";
+      clangd = mkEnableOption "Enable c/c++ lsp server";
+      rust_analyzer = mkEnableOption "Enable rust lsp server";
+      yamlls = mkEnableOption "Enable yaml lsp server";
     };
   };
 
@@ -32,14 +33,14 @@ in {
         };
         servers = {
           nil-ls.enable = true;
-          yamlls.enable = true;
-          zls = mkIf cfg.enable_zls {
+          yamlls = mkIf cfg.yamlls { enable = true; };
+          zls = mkIf cfg.zls {
             enable = true;
-            settings = { enable_build_on_save = true; };
+            settings = { build_on_save = true; };
           };
-          clangd = mkIf cfg.enable_clangd { enable = true; };
-          gopls = mkIf cfg.enable_gopls { enable = true; };
-          rust-analyzer = mkIf cfg.enable_rust_analyzer {
+          clangd = mkIf cfg.clangd { enable = true; };
+          gopls = mkIf cfg.gopls { enable = true; };
+          rust-analyzer = mkIf cfg.rust_analyzer {
             enable = true;
             installCargo = false;
             installRustc = false;

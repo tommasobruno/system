@@ -14,10 +14,11 @@
     };
 
     lsp = {
-      enable_gopls = true;
-      enable_zls = true;
-      enable_clangd = true;
-      enable_rust_analyzer = true;
+      gopls = true;
+      zls = true;
+      clangd = true;
+      rust_analyzer = true;
+      yamlls = true;
     };
 
     treesitter_parsers = [
