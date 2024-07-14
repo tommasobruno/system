@@ -1,10 +1,11 @@
 { lib, config, ... }:
+with lib;
 let cfg = config.dock;
 in {
   options = {
     dock = {
-      apps = lib.mkOption {
-        type = lib.types.listOf lib.types.str;
+      apps = mkOption {
+        type = with types; listOf str;
         description = "Apps to show in the dock";
       };
     };

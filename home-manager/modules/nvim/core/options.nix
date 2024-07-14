@@ -1,5 +1,6 @@
 { ... }: {
   programs.nixvim.opts = {
+    foldenable = false;
     cursorline = true;
     guicursor = "";
     hlsearch = false;

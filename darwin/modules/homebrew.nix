@@ -1,10 +1,11 @@
 { lib, config, ... }:
+with lib;
 let cfg = config.homebrew;
 in {
   options = {
     homebrew = {
-      installCasks = lib.mkOption {
-        type = lib.types.listOf lib.types.str;
+      installCasks = mkOption {
+        type = with types; listOf str;
         description = "Homebrew casks to install";
       };
     };
