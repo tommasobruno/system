@@ -19,6 +19,8 @@
       c = true;
       rust = true;
       typescript = true;
+
+      extra_formatters = with pkgs; [ prettierd ];
     };
 
     treesitter_parsers = [
