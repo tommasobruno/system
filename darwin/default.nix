@@ -32,6 +32,9 @@
         show-thumbnail = false;
         type = "png";
       };
+      CustomSystemPreferences = {
+        "com.apple.AdLib" = { allowApplePersonalizedAdvertising = false; };
+      };
     };
   };
 
