@@ -47,14 +47,14 @@ in {
             yamlls.enable = true;
 
             # Rest
-            zls = mkIf cfg.zig {
+            zls = mkIf cfg.zig.enable {
               enable = true;
               settings = { build_on_save = true; };
             };
-            clangd = mkIf cfg.c { enable = true; };
-            gopls = mkIf cfg.go { enable = true; };
-            tsserver = mkIf cfg.typescript { enable = true; };
-            rust-analyzer = mkIf cfg.rust {
+            clangd = mkIf cfg.c.enable { enable = true; };
+            gopls = mkIf cfg.go.enable { enable = true; };
+            tsserver = mkIf cfg.typescript.enable { enable = true; };
+            rust-analyzer = mkIf cfg.rust.enable {
               enable = true;
               installCargo = false;
               installRustc = false;
@@ -70,12 +70,12 @@ in {
           };
           formattersByFt = {
             nix = [ "nixfmt" ];
-            zig = mkIf cfg.zig [ "zigfmt" ];
-            cpp = mkIf cfg.c [ "clang-format" ];
-            c = mkIf cfg.c [ "clang-format" ];
-            go = mkIf cfg.go [ "gofmt" ];
-            rust = mkIf cfg.rust [ "rustfmt" ];
-            typescript = mkIf cfg.typescript [ "prettierd" ];
+            zig = mkIf cfg.zig.enable [ "zigfmt" ];
+            cpp = mkIf cfg.c.enable [ "clang-format" ];
+            c = mkIf cfg.c.enable [ "clang-format" ];
+            go = mkIf cfg.go.enable [ "gofmt" ];
+            rust = mkIf cfg.rust.enable [ "rustfmt" ];
+            typescript = mkIf cfg.typescript.enable [ "prettierd" ];
           };
         };
       };
