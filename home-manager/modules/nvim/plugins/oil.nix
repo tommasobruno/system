@@ -7,7 +7,13 @@
           show_hidden = true;
           is_always_hidden = ''
             function(name, _)
-              return name == '..' or name == '.git' or name == '.DS_Store' or name == '.obsidian'
+              local ignores = { '..', '.git', '.DS_Store', '.obsidian', 'node_modules' }
+              for _, ignore in ipairs(ignores) do
+                if ignore == name then
+                  return true
+                end
+              end
+              return false
             end
           '';
         };
