@@ -14,13 +14,11 @@
     };
 
     dev = {
-      go.enable = true;
-      zig.enable = true;
-      c.enable = true;
-      rust.enable = true;
-      typescript.enable = true;
-
-      extra_formatters = with pkgs; [ prettierd nixfmt-classic ];
+      go = false;
+      zig = true;
+      c = true;
+      rust = true;
+      typescript = true;
     };
 
     treesitter_parsers = [

@@ -1,27 +1,62 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 with lib;
-let cfg = config.nvim.dev;
+let
+  cfg = config.nvim.dev;
+  formatters_set = {
+    zig = "zigfmt";
+    c = "clang-format";
+    rust = "rustfmt";
+    go = "gofmt";
+    typescript = "prettierd";
+  };
+
+  servers_language_map = {
+    zls = "zig";
+    gopls = "go";
+    tsserver = "typescript";
+    rust-analyzer = "rust";
+    clangd = "c";
+  };
+
+  servers_set = {
+    zls = {
+      enable = true;
+      settings = { build_on_save = true; };
+    };
+
+    clangd = { enable = true; };
+    gopls = { enable = true; };
+    tsserver = { enable = true; };
+    rust-analyzer = {
+      enable = true;
+      installCargo = false;
+      installRustc = false;
+    };
+  };
+
+  enabled_formatters =
+    builtins.mapAttrs (l: v: if builtins.getAttr l cfg then [ v ] else [ ])
+    formatters_set;
+
+  enabled_servers = builtins.mapAttrs (l: s:
+    if builtins.getAttr (builtins.getAttr l servers_language_map) cfg then
+      s
+    else
+      { }) servers_set;
 in {
   options = {
     nvim.dev = {
-      go.enable = mkEnableOption "Enable go dev setup";
-      zig.enable = mkEnableOption "Enable zig dev setup";
-      c.enable = mkEnableOption "Enable c/c++ dev setup";
-      rust.enable = mkEnableOption "Enable rust dev setup";
-      typescript.enable = mkEnableOption "Enable typescript dev setup";
-
-      extra_formatters = mkOption {
-        type = with types; listOf package;
-        description =
-          "Extra formatters which are not included in the language package";
-        default = [ ];
-      };
+      go = mkEnableOption "Enable go dev setup";
+      zig = mkEnableOption "Enable zig dev setup";
+      c = mkEnableOption "Enable c/c++ dev setup";
+      rust = mkEnableOption "Enable rust dev setup";
+      typescript = mkEnableOption "Enable typescript dev setup";
     };
   };
 
   config = {
     programs.nixvim = {
-      extraPackages = cfg.extra_formatters;
+      extraPackages = with pkgs; [ nixfmt-classic ];
 
       plugins = {
         lsp = {
@@ -45,21 +80,7 @@ in {
             # Always have
             nil-ls.enable = true;
             yamlls.enable = true;
-
-            # Rest
-            zls = mkIf cfg.zig.enable {
-              enable = true;
-              settings = { build_on_save = true; };
-            };
-            clangd = mkIf cfg.c.enable { enable = true; };
-            gopls = mkIf cfg.go.enable { enable = true; };
-            tsserver = mkIf cfg.typescript.enable { enable = true; };
-            rust-analyzer = mkIf cfg.rust.enable {
-              enable = true;
-              installCargo = false;
-              installRustc = false;
-            };
-          };
+          } // enabled_servers;
         };
 
         conform-nvim = {
@@ -68,15 +89,7 @@ in {
             timeoutMs = 500;
             lspFallback = true;
           };
-          formattersByFt = {
-            nix = [ "nixfmt" ];
-            zig = mkIf cfg.zig.enable [ "zigfmt" ];
-            cpp = mkIf cfg.c.enable [ "clang-format" ];
-            c = mkIf cfg.c.enable [ "clang-format" ];
-            go = mkIf cfg.go.enable [ "gofmt" ];
-            rust = mkIf cfg.rust.enable [ "rustfmt" ];
-            typescript = mkIf cfg.typescript.enable [ "prettierd" ];
-          };
+          formattersByFt = { nix = [ "nixfmt" ]; } // enabled_formatters;
         };
       };
     };
