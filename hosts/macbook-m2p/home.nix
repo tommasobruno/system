@@ -20,7 +20,7 @@
       rust = true;
       typescript = true;
 
-      extra_formatters = with pkgs; [ prettierd ];
+      extra_formatters = with pkgs; [ prettierd nixfmt-classic ];
     };
 
     treesitter_parsers = [
