@@ -34,8 +34,5 @@
     go
     nodejs_22
     rustup
-
-    # Tools
-    ripgrep
   ];
 }

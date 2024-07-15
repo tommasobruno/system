@@ -4,6 +4,7 @@
     vimAlias = true;
 
     extraPlugins = with pkgs.vimPlugins; [ colorbuddy-nvim ];
+    extraPackages = with pkgs; [ ripgrep ];
 
     extraConfigLuaPost = ''
       vim.cmd.colorscheme("gruvbuddy")
