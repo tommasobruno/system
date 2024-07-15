@@ -9,6 +9,14 @@
       vim.cmd.colorscheme("gruvbuddy")
     '';
 
+    colorschemes.gruvbox = {
+      enable = false;
+      settings = {
+        terminal_colors = true;
+        transparent_mode = true;
+      };
+    };
+
     filetype = {
       extension = {
         vert = "glsl";

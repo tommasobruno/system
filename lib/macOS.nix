@@ -1,5 +1,5 @@
 { inputs, lib, }: {
-  mkMacOS = { macModule, homeModule, system, hostname, }:
+  mkMacOS = { macModule, homeModule, system, hostname }:
     let
       nix-common = {
         # Nix settings

@@ -19,19 +19,10 @@
       c = true;
       rust = true;
       typescript = true;
+
+      treesitter_parsers = [ "zig" "go" "c" "typescript" "rust" ];
     };
 
-    treesitter_parsers = [
-      "zig"
-      "go"
-      "html"
-      "typescript"
-      "javascript"
-      "cpp"
-      "c"
-      "markdown"
-      "markdown_inline"
-    ];
   };
 
   home.packages = with pkgs; [

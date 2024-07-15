@@ -2,6 +2,7 @@
 with lib;
 let
   cfg = config.nvim.dev;
+
   formatters_set = {
     zig = "zigfmt";
     c = "clang-format";
@@ -47,11 +48,11 @@ let
 in {
   options = {
     nvim.dev = {
-      go = mkEnableOption "Enable go dev setup";
-      zig = mkEnableOption "Enable zig dev setup";
-      c = mkEnableOption "Enable c/c++ dev setup";
-      rust = mkEnableOption "Enable rust dev setup";
-      typescript = mkEnableOption "Enable typescript dev setup";
+      go = mkEnableOption "Go dev setup";
+      zig = mkEnableOption "Zig dev setup";
+      rust = mkEnableOption "Rust dev setup";
+      c = mkEnableOption "C/C++ dev setup";
+      typescript = mkEnableOption "Typescript dev setup";
     };
   };
 
