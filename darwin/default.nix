@@ -46,15 +46,7 @@
   fonts.packages =
     [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" ]; }) ];
 
-  programs.zsh = {
-    enable = true;
-    shellInit = ''
-      if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-          . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-      fi
-    '';
-  };
-
+  programs.zsh.enable = true;
   environment = {
     shells = [ pkgs.zsh ];
     systemPackages = with pkgs; [ vim ];
