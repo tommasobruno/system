@@ -8,6 +8,7 @@ in {
         type = with types; listOf str;
         description = "Apps to show in the dock";
       };
+      hide = mkEnableOption "Hide dock";
     };
   };
 
@@ -18,7 +19,7 @@ in {
       minimize-to-application = true;
       mineffect = null;
       tilesize = 48;
-      autohide = true;
+      autohide = cfg.hide;
       persistent-apps = cfg.apps;
     };
   };
