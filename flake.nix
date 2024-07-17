@@ -36,6 +36,7 @@
         personal = mkMacOS {
           macModule = ./hosts/macbook-m2p/os.nix;
           homeModule = ./hosts/macbook-m2p/xdg.nix;
+          nixModule = ./hosts/macbook-m2p/nix.nix;
           system = macOS_personal_system;
           hostname = "tommasobruno";
         };

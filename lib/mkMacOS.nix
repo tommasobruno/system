@@ -1,5 +1,5 @@
 { inputs, lib, }: {
-  mkMacOS = { macModule, homeModule, system, hostname }:
+  mkMacOS = { macModule, homeModule, nixModule, system, hostname }:
     let
       os_modules = import ../modules/os;
       xdg_modules = import ../modules/xdg;
@@ -26,6 +26,7 @@
         nix_modules
         os_modules
         macModule
+        nixModule
       ];
     };
 }

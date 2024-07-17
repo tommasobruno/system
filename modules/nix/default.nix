@@ -1,15 +1,31 @@
-{ lib, system, ... }: {
-  nix = {
-    settings = {
-      experimental-features = "nix-command flakes";
-      auto-optimise-store = true;
+{ lib, config, system, ... }:
+with lib;
+let cfg = config.nix;
+in {
+  options = {
+    nix = {
+      unfree_apps = with types;
+        mkOption {
+          type = listOf str;
+          description = "Which unfree apps to allow";
+          default = [ ];
+        };
     };
   };
 
-  nixpkgs = { hostPlatform = system; };
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [ "obsidian" ];
+  config = {
+    nix = {
+      settings = {
+        experimental-features = "nix-command flakes";
+        auto-optimise-store = true;
+      };
+    };
 
-  services.nix-daemon.enable = true;
+    nixpkgs = {
+      hostPlatform = system;
+      config.allowUnfreePredicate = pkg:
+        builtins.elem (getName pkg) cfg.unfree_apps;
+    };
+  };
 }
 
