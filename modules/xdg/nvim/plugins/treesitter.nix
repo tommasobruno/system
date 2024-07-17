@@ -6,7 +6,7 @@ in {
     xdg.nvim.dev = {
       treesitter_parsers = mkOption {
         type = with types; listOf str;
-        description = "Treesitter parsers to install";
+        description = "Which treesitter parsers to install";
       };
     };
   };

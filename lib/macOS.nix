@@ -1,7 +1,6 @@
 { inputs, lib, }: {
   mkMacOS = { macModule, homeModule, system, hostname }:
     let
-
       os_modules = import ../modules/os;
       xdg_modules = import ../modules/xdg;
 

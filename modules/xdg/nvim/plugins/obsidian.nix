@@ -4,18 +4,18 @@ let cfg = config.xdg.nvim.obsidian;
 in {
   options = {
     xdg.nvim.obsidian = {
-      enable = mkEnableOption "Enable obsidian-nvim";
+      enable = mkEnableOption "Whether to enable obsidian-nvim";
       workspaces = mkOption {
         type = with types;
           listOf (submodule {
             options = {
               name = mkOption {
                 type = str;
-                description = "Name of the Obsidian workspace";
+                description = "Which name for the Obsidian workspace";
               };
               path = mkOption {
                 type = str;
-                description = "Path of the Obsidian workspace";
+                description = "Which path for the Obsidian workspace";
               };
             };
           });

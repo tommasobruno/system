@@ -6,11 +6,11 @@ in {
     xdg.git = with types; {
       username = mkOption {
         type = str;
-        description = "Git username";
+        description = "Which git username";
       };
       email = mkOption {
         type = str;
-        description = "Git email";
+        description = "Which git email";
       };
     };
   };

@@ -48,11 +48,11 @@ let
 in {
   options = {
     xdg.nvim.dev = {
-      go = mkEnableOption "Go dev setup";
-      zig = mkEnableOption "Zig dev setup";
-      rust = mkEnableOption "Rust dev setup";
-      c = mkEnableOption "C/C++ dev setup";
-      typescript = mkEnableOption "Typescript dev setup";
+      go = mkEnableOption "Whether to enable go dev setup";
+      zig = mkEnableOption "Whether to enable zig dev setup";
+      rust = mkEnableOption "Whether to enable rust dev setup";
+      c = mkEnableOption "Whether to enable c/c++ dev setup";
+      typescript = mkEnableOption "Whether to enable typescript dev setup";
     };
   };
 
