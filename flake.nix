@@ -26,23 +26,19 @@
         inherit inputs;
         lib = nixpkgs.lib;
       };
+
+      macOS_personal_system = "aarch64-darwin";
     in {
-      formatter.aarch64-darwin =
+      formatter.${macOS_personal_system} =
         nixpkgs.legacyPackages.aarch64-darwin.nixfmt-classic;
 
       darwinConfigurations = with macosLib; {
         personal = mkMacOS {
           macModule = ./hosts/macbook-m2p/darwin.nix;
           homeModule = ./hosts/macbook-m2p/home.nix;
-          system = "aarch64-darwin";
+          system = macOS_personal_system;
           hostname = "tommasobruno";
         };
       };
-
-      homeManagerModules.default = ./home-manager;
-      darwinModules.default = ./darwin;
-
-      packages.aarch64-darwin.default =
-        nixpkgs.legacyPackages.aarch64-darwin.nixfmt-classic;
     };
 }

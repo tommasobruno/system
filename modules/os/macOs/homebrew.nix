@@ -1,10 +1,10 @@
 { lib, config, ... }:
 with lib;
-let cfg = config.homebrew;
+let cfg = config.os.macOs.homebrew;
 in {
   options = {
-    homebrew = {
-      installCasks = mkOption {
+    os.macOs.homebrew = {
+      casks = mkOption {
         type = with types; listOf str;
         description = "Homebrew casks to install";
       };
@@ -17,7 +17,7 @@ in {
         autoUpdate = true;
         cleanup = "zap";
       };
-      casks = cfg.installCasks;
+      casks = cfg.casks;
     };
   };
 }

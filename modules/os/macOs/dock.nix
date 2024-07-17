@@ -1,14 +1,17 @@
 { lib, config, ... }:
 with lib;
-let cfg = config.dock;
+let cfg = config.os.macOs.dock;
 in {
   options = {
-    dock = {
+    os.macOs.dock = {
       apps = mkOption {
         type = with types; listOf str;
-        description = "Apps to show in the dock";
+        description = "Which apps to always show in the dock";
       };
-      hide = mkEnableOption "Hide dock";
+      hide = mkOption {
+        type = with types; bool;
+        description = "Whether to automatically hide the dock";
+      };
     };
   };
 
