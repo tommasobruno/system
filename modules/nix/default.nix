@@ -6,7 +6,7 @@ in {
     nix = {
       unfree_apps = with types;
         mkOption {
-          type = listOf str;
+          type = nullOr (listOf str);
           description = "Which unfree apps to allow";
           default = [ ];
         };
