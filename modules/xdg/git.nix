@@ -1,9 +1,9 @@
 { lib, config, ... }:
 with lib;
-let cfg = config.git;
+let cfg = config.xdg.git;
 in {
   options = {
-    git = with types; {
+    xdg.git = with types; {
       username = mkOption {
         type = str;
         description = "Git username";

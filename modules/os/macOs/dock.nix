@@ -3,13 +3,13 @@ with lib;
 let cfg = config.os.macOs.dock;
 in {
   options = {
-    os.macOs.dock = {
+    os.macOs.dock = with types; {
       apps = mkOption {
-        type = with types; listOf str;
+        type = listOf str;
         description = "Which apps to always show in the dock";
       };
       hide = mkOption {
-        type = with types; bool;
+        type = bool;
         description = "Whether to automatically hide the dock";
       };
     };

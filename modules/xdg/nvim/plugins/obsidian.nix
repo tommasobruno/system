@@ -1,9 +1,9 @@
 { lib, config, ... }:
 with lib;
-let cfg = config.nvim.obsidian;
+let cfg = config.xdg.nvim.obsidian;
 in {
   options = {
-    nvim.obsidian = {
+    xdg.nvim.obsidian = {
       enable = mkEnableOption "Enable obsidian-nvim";
       workspaces = mkOption {
         type = with types;

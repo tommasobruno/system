@@ -3,14 +3,14 @@ with lib;
 let cfg = config.os.macOs.base;
 in {
   options = {
-    os.macOs.base = {
+    os.macOs.base = with types; {
       timeZone = mkOption {
-        type = with types; nullOr str;
+        type = nullOr str;
         description = "Which time zone to enable";
         default = "Europe/London";
       };
       useTouchIdForSudo = mkOption {
-        type = with types; nullOr bool;
+        type = nullOr bool;
         description = "Whether to enable the use of touch id for sudo commands";
         default = false;
       };

@@ -1,9 +1,9 @@
 { lib, config, ... }:
 with lib;
-let cfg = config.nvim.dev;
+let cfg = config.xdg.nvim.dev;
 in {
   options = {
-    nvim.dev = {
+    xdg.nvim.dev = {
       treesitter_parsers = mkOption {
         type = with types; listOf str;
         description = "Treesitter parsers to install";

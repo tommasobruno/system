@@ -2,8 +2,8 @@
   mkMacOS = { macModule, homeModule, system, hostname }:
     let
 
-      modules = import ../modules;
-      homeModuleDefault = import ../home-manager;
+      os_modules = import ../modules/os;
+      xdg_modules = import ../modules/xdg;
 
       nix-common = {
         # Nix settings
@@ -36,13 +36,13 @@
             users.${hostname} = {
               imports = [
                 inputs.nixvim.homeManagerModules.nixvim
-                homeModuleDefault
+                xdg_modules
                 homeModule
               ];
             };
           };
         }
-        modules
+        os_modules
         macModule
       ];
     };

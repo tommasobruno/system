@@ -1,28 +1,30 @@
 { pkgs, ... }: {
-  git = {
-    username = "tommasobruno";
-    email = "bruno.tommaso@protonmail.com";
-  };
 
-  nvim = {
-    obsidian = {
-      enable = true;
-      workspaces = [{
-        name = "personal";
-        path = "~/obsidian/personal";
-      }];
+  xdg = {
+    git = {
+      username = "tommasobruno";
+      email = "bruno.tommaso@protonmail.com";
     };
 
-    dev = {
-      go = false;
-      zig = true;
-      c = true;
-      rust = true;
-      typescript = true;
+    nvim = {
+      obsidian = {
+        enable = true;
+        workspaces = [{
+          name = "personal";
+          path = "~/obsidian/personal";
+        }];
+      };
 
-      treesitter_parsers = [ "zig" "go" "c" "typescript" "rust" ];
+      dev = {
+        go = false;
+        zig = true;
+        c = true;
+        rust = true;
+        typescript = true;
+
+        treesitter_parsers = [ "zig" "go" "c" "typescript" "rust" ];
+      };
     };
-
   };
 
   home.packages = with pkgs; [

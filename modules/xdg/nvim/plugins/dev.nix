@@ -1,7 +1,7 @@
 { lib, config, pkgs, ... }:
 with lib;
 let
-  cfg = config.nvim.dev;
+  cfg = config.xdg.nvim.dev;
 
   formatters_set = {
     zig = "zigfmt";
@@ -47,7 +47,7 @@ let
 
 in {
   options = {
-    nvim.dev = {
+    xdg.nvim.dev = {
       go = mkEnableOption "Go dev setup";
       zig = mkEnableOption "Zig dev setup";
       rust = mkEnableOption "Rust dev setup";
