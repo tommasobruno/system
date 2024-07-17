@@ -30,7 +30,7 @@
       macOS_personal_system = "aarch64-darwin";
     in {
       formatter.${macOS_personal_system} =
-        nixpkgs.legacyPackages.aarch64-darwin.nixfmt-classic;
+        nixpkgs.legacyPackages.${macOS_personal_system}.nixfmt-classic;
 
       darwinConfigurations = with macosLib; {
         personal = mkMacOS {
@@ -40,5 +40,8 @@
           hostname = "tommasobruno";
         };
       };
+
+      packages.${macOS_personal_system}.default =
+        nixpkgs.legacyPackages.${macOS_personal_system}.nixfmt-classic;
     };
 }

@@ -18,3 +18,4 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
           github_access_token: ${{ secrets.GH_TOKEN }}
       - run: nix build
+      - run: nix flake check
