@@ -22,7 +22,7 @@
 
   outputs = { nixpkgs, ... }@inputs:
     let
-      macosLib = import ./lib/macOS.nix {
+      macosLib = import ./lib/mkMacOS.nix {
         inherit inputs;
         lib = nixpkgs.lib;
       };
