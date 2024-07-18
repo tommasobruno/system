@@ -8,6 +8,8 @@
     in inputs.nix-darwin.lib.darwinSystem {
       specialArgs = { inherit system; };
       modules = [
+        nix_modules
+        nixModule
         inputs.home-manager.darwinModules.home-manager
         {
           users.users.${hostname}.home = "/Users/${hostname}";
@@ -23,10 +25,8 @@
             };
           };
         }
-        nix_modules
         os_modules
         macModule
-        nixModule
       ];
     };
 }
