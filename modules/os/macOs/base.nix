@@ -18,26 +18,32 @@ in {
   };
 
   config = {
-    system.defaults = {
-      loginwindow = {
-        SHOWFULLNAME = false;
-        GuestEnabled = false;
-      };
+    system = {
 
-      NSGlobalDomain = {
-        AppleInterfaceStyle = "Dark";
-        AppleInterfaceStyleSwitchesAutomatically = false;
-        AppleMeasurementUnits = "Centimeters";
-        AppleTemperatureUnit = "Celsius";
-        _HIHideMenuBar = false;
-      };
+      keyboard.enableKeyMapping = true;
+      keyboard.remapCapsLockToEscape = true;
 
-      SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
+      defaults = {
+        loginwindow = {
+          SHOWFULLNAME = false;
+          GuestEnabled = false;
+        };
 
-      screencapture = {
-        location = "~/Pictures";
-        show-thumbnail = false;
-        type = "png";
+        NSGlobalDomain = {
+          AppleInterfaceStyle = "Dark";
+          AppleInterfaceStyleSwitchesAutomatically = false;
+          AppleMeasurementUnits = "Centimeters";
+          AppleTemperatureUnit = "Celsius";
+          _HIHideMenuBar = false;
+        };
+
+        SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
+
+        screencapture = {
+          location = "~/Pictures";
+          show-thumbnail = false;
+          type = "png";
+        };
       };
     };
 
