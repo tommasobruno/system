@@ -10,9 +10,16 @@
       precmd() { vcs_info }
       zstyle ':vcs_info:git:*' formats '%b '
 
-      setopt PROMPT_SUBST
-      PROMPT="%F{blue}%~%f %F{yellow}"\$\{vcs_info_msg_0_}"%f$ "
       RPROMPT=""
+      setopt PROMPT_SUBST
+
+      # Detect if in nix-shell
+      if [[ -n "$IN_NIX_SHELL" ]]; then
+        # Customize the prompt for nix-shell
+       PROMPT="%F{red}(nix-shell)%f %F{blue}%~%f %F{yellow}"\$\{vcs_info_msg_0_}"%f$ "
+      else
+       PROMPT="%F{blue}%~%f %F{yellow}"\$\{vcs_info_msg_0_}"%f$ "
+      fi
     '';
   };
 }

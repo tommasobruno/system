@@ -3,15 +3,15 @@
     enable = true;
     vimAlias = true;
 
-    extraPlugins = with pkgs.vimPlugins; [ colorbuddy-nvim ];
+    #extraPlugins = with pkgs.vimPlugins; [ colorbuddy-nvim ];
     extraPackages = with pkgs; [ ripgrep ];
 
-    extraConfigLuaPost = ''
-      vim.cmd.colorscheme("gruvbuddy")
-    '';
+    #extraConfigLuaPost = ''
+    # vim.cmd.colorscheme("colorbuddy")
+    #'';
 
     colorschemes.gruvbox = {
-      enable = false;
+      enable = true;
       settings = {
         terminal_colors = true;
         transparent_mode = true;

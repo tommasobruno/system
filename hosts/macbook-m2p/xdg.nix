@@ -15,16 +15,6 @@
           path = "~/obsidian/personal";
         }];
       };
-
-      dev = {
-        go = false;
-        zig = true;
-        c = true;
-        rust = true;
-        typescript = true;
-
-        treesitter_parsers = [ "zig" "go" "c" "typescript" "rust" ];
-      };
     };
   };
 }
