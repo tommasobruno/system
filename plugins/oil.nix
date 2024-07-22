@@ -7,7 +7,7 @@
           show_hidden = true;
           is_always_hidden = ''
             function(name, _)
-              local ignores = { '..', '.git', '.DS_Store', '.obsidian', 'node_modules' }
+              local ignores = { '..', '.git', '.DS_Store', '.obsidian', 'node_modules', '.zig-cache', 'zig-out' }
               for _, ignore in ipairs(ignores) do
                 if ignore == name then
                   return true
