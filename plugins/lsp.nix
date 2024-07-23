@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
 
   programs.nixvim.plugins.lsp = {
     enable = true;
@@ -31,6 +31,9 @@
       clangd = {
         enable = true;
         package = null;
+        settings = {
+          init_options = { clangdFileStatus = true; };
+        };
       };
       gopls = {
         enable = true;
