@@ -1,3 +1,0 @@
-[submodule "modules/xdg/nvim-nix"]
-	path = modules/xdg/nvim-nix
-	url = git@github.com:tommasobruno/nvim-nix.git
