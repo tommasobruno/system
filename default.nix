@@ -3,12 +3,7 @@
     enable = true;
     vimAlias = true;
 
-    #extraPlugins = with pkgs.vimPlugins; [ colorbuddy-nvim ];
-    extraPackages = with pkgs; [ ripgrep ];
-
-    #extraConfigLuaPost = ''
-    # vim.cmd.colorscheme("colorbuddy")
-    #'';
+    extraPackages = with pkgs; [ ripgrep nixfmt-classic ];
 
     colorschemes.gruvbox = {
       enable = true;
@@ -22,6 +17,7 @@
       extension = {
         vert = "glsl";
         frag = "glsl";
+        h = "c";
       };
     };
   };
