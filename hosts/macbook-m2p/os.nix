@@ -11,7 +11,10 @@
       hide = true;
     };
 
-    homebrew.casks = [ "arc" ];
+    homebrew = {
+      brews = [ "raylib" ];
+      casks = [ "arc" ];
+    };
   };
 
 }

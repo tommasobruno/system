@@ -15,7 +15,7 @@
 
       if wezterm.config_builder() then
         config = wezterm.config_builder()
-      end
+          end
 
       config.colors = {}
       config.colors.background = '#111111'

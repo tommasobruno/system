@@ -3,10 +3,14 @@ with lib;
 let cfg = config.os.macOs.homebrew;
 in {
   options = {
-    os.macOs.homebrew = {
+    os.macOs.homebrew = with types; {
       casks = mkOption {
-        type = with types; listOf str;
+        type = listOf str;
         description = "Which homebrew casks to install";
+      };
+      brews = mkOption {
+        type = listOf str;
+        description = "Which homebrew brews to intsall";
       };
     };
   };
@@ -18,6 +22,7 @@ in {
         cleanup = "zap";
       };
       casks = cfg.casks;
+      brews = cfg.brews;
     };
   };
 }

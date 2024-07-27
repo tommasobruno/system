@@ -4,6 +4,7 @@
     shellAliases = {
       nixs =
         "/run/current-system/sw/bin/darwin-rebuild switch --flake ~/system/.#personal";
+      nd = "nix develop";
     };
     initExtra = ''
       autoload -Uz vcs_info
