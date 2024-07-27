@@ -1,1 +1,1 @@
-{ ... }: { imports = [ ./zig.nix ]; }
+{ ... }: { imports = [ ./zig.nix ./c.nix ]; }
